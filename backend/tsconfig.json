@@ -1,0 +1,14 @@
+//burda once npm init -y d=sonra u dosyayi bos kureuk s
+//https://www.typescriptlang.org/download bu sayfada npm 
+//npm insatall --save-dev typescript ts-node-dev yaptim ama sayadaa daha farkli sonra atakiki kopyaaldim
+ {
+  "compilerOptions": {
+    "target": "es2015",
+    "outDir": "./build",
+    "strict": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
