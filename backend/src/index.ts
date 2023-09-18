@@ -1,6 +1,24 @@
 import cors from  'cors'
 import express ,{ Request , Response} from 'express'
 import {sampleProducts } from './data'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+dotenv.config()
+
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/tsamazon'
+mongoose.set('strictQuery' ,true)
+mongoose
+.connect(MONGO_URI)
+.then(()=>{
+    console.log('conect momgo db')
+})
+.catch(()=>{
+    console.log('error mongo')
+})
+
+
+
+
 
 const app = express()
 app.use(
