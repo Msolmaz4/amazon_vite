@@ -1,8 +1,10 @@
 import cors from  'cors'
-import express ,{ Request , Response} from 'express'
-import {sampleProducts } from './data'
+import express  from 'express'
+//import {sampleProducts } from './data'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import { productRouter } from './routers/productRouter'
+import { seedRouter } from './routers/seedRouter'
 dotenv.config()
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/tsamazon'
@@ -27,12 +29,14 @@ app.use(
         origin:['http://localhost:5173']
     })
 )
-app.get('/api/products', (req:Request,res:Response) => {
-    res.json(sampleProducts)
-})
-app.get('/api/products/:slug', (req:Request,res:Response) => {
-    res.json(sampleProducts.find((x)=>x.slug === req.params.slug))
-})
+
+
+app.use('/api/products', productRouter)
+app.use('/api/seed', seedRouter)
+
+
+
+
 const PORT = 4000
 app.listen(PORT , ()=>{
     console.log(`server saatart at ${PORT}`)
